@@ -1,0 +1,154 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #1D3340;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1D3340;
+    padding: 20px 30px;
+    color: white;
+}
+
+/* Navbar */
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Services Section */
+.services {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+/* Accordion Container */
+.service-column {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.service-column:hover {
+    transform: translateY(-3px);
+}
+
+/* Accordion Button */
+.accordion {
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 15px;
+    background-color: #2C4A52;
+    color: white;
+    text-align: left;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.accordion:hover {
+    background-color: #1d3340;
+}
+
+/* Arrow Icon */
+.accordion::after {
+    content: '\25BC';
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.accordion.active::after {
+    transform: rotate(180deg);
+}
+
+/* Panel (Hidden by Default) */
+/* Expanded Panel (Now Uses Custom Background) */
+.panel {
+    max-height: 0;
+    overflow: hidden;
+    background-color: #D5DBC1; /* Replace this with your exact color */
+    color: #1D3340;
+    text-align: left;
+    padding: 0 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    transition: max-height 0.4s ease-out, padding 0.3s ease-out;
+}
+
+/* Active State with Background Applied */
+.panel.active {
+    max-height: 500px;
+    padding: 15px;
+    background-color: #D5DBC1; /* Ensure this matches the uploaded color */
+}
+
+
+/* List Style */
+.panel ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.panel ul li {
+    font-size: 18px;
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+    font-family: sans-serif;
+}
+
+.panel ul li::before {
+    content: '✔';
+    color: #2C4A52;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Smooth Appearance */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.panel.active {
+    animation: fadeIn 0.4s ease-in-out;
+}

@@ -135,17 +135,22 @@ footer {
     text-align: center;
     color: #FFFFFF; /* White */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
 }
-
+.testimonials p{
+    margin-bottom: 30px;
+}
 .testimonials h2 {
     font-size: 40px;
     margin-bottom: 40px;
+    margin-top: auto;
+    padding: auto;
     color: #A7B9A8; /* Soft Sage */
 }
 
 .testimonial-card {
     background-color: #5A7D7C; /* Muted Blue-Green */
-    margin: 20px;
+    margin: auto;
     padding: 40px;
     width: 300px;
     border-radius: 10px;
