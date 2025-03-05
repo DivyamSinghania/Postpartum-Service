@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="account.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@12.0.0"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div id="main-div" class="bg-white p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center">
+        
+        <!-- Left Side: Sign-Up Form -->
+        <div class="w-full md:w-1/2 p-6">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Sign up</h2>
+            
+            <form id="signupForm" class="space-y-4">
+                <div class="flex items-center border-b border-gray-600 py-2">
+                    <i class="fas fa-user text-gray-800 mr-3"></i>
+                    <input id="name" class="appearance-none bg-transparent border-none w-full text-gray-900 py-1 px-2 focus:outline-none" placeholder="Your Name" type="text" required/>
+                </div>
+            
+                <div class="flex items-center border-b border-gray-600 py-2">
+                    <i class="fas fa-envelope text-gray-800 mr-3"></i>
+                    <input id="email" class="appearance-none bg-transparent border-none w-full text-gray-900 py-1 px-2 focus:outline-none" placeholder="Your Email" type="email" required/>
+                </div>
+            
+                <div class="flex items-center border-b border-gray-600 py-2">
+                    <i class="fas fa-lock text-gray-800 mr-3"></i>
+                    <input id="password" class="appearance-none bg-transparent border-none w-full text-gray-900 py-1 px-2 focus:outline-none" placeholder="Password" type="password" required/>
+                </div>
+            
+                <button type="submit" class="w-full bg-emerald-700 text-white py-2 px-4 rounded hover:bg-emerald-600">
+                    Register
+                </button>
+            </form>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class="w-full md:w-1/2 flex flex-col items-center p-6">
+            <img alt="Signup Illustration" class="w-64 h-64 object-contain" src="https://storage.googleapis.com/a1aa/image/LVgjxaj2YP7w_7eneaCTauFgdAsDtXIRAeZKzl7fPXc.jpg"/>
+            
+            <!-- Already Member Section -->
+            <div class="mt-4 text-center">
+                <a class="text-emerald-700 hover:underline" href="/login3.html">I am already a member</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ✅ Initialize Appwrite Client
+        const client = new window.Appwrite.Client();
+
+        client
+            .setEndpoint("https://cloud.appwrite.io/v1") // Replace with your Appwrite endpoint
+            .setProject("p2"); // Your Appwrite Project ID
+
+        const account = new window.Appwrite.Account(client);
+        const ID = window.Appwrite.ID;  // Import ID for unique identifiers
+
+        // ✅ Signup Function
+        async function signupUser(name, email, password) {
+            try {
+                // 1️⃣ Create a new user account
+                const user = await account.create(ID.unique(), email, password, name);
+
+                // 2️⃣ Automatically log in the user after signup
+                await account.createEmailSession(email, password);
+
+                alert("✅ Signup successful! Redirecting to dashboard...");
+                window.location.href = "/dashboard.html"; // Redirect to dashboard page
+            } catch (error) {
+                console.error("❌ Signup failed:", error);
+                alert("Signup failed: " + error.message);
+            }
+        }
+
+        // ✅ Handle Form Submission
+        document.getElementById("signupForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            signupUser(name, email, password);
+        });
+    </script>
+</body>
+</html>
