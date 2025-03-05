@@ -4,6 +4,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+.services h1 {
+    font-size: 3rem;  /* Adjust size as needed */
+    font-weight: bold;
+    text-align: center;
+    color: #2C3E50;  /* Dark shade for better contrast */
+    margin-bottom: 20px; /* Adds spacing below the heading */
+    /* text-transform: uppercase; Makes text uppercase for emphasis */
+    letter-spacing: 2px; /* Adds spacing between letters for better readability */
+}
 
 /* Body */
 body {
