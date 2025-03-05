@@ -37,7 +37,7 @@
 
         <!-- Right Side: Image -->
         <div class="w-full md:w-1/2 flex flex-col items-center p-6">
-            <img alt="Signup Illustration" class="w-64 h-64 object-contain" src="https://storage.googleapis.com/a1aa/image/LVgjxaj2YP7w_7eneaCTauFgdAsDtXIRAeZKzl7fPXc.jpg"/>
+            <img alt="Signup Illustration" class="mix-blend-darken w-64 h-64 object-contain" src="https://storage.googleapis.com/a1aa/image/LVgjxaj2YP7w_7eneaCTauFgdAsDtXIRAeZKzl7fPXc.jpg"/>
             
             <!-- Already Member Section -->
             <div class="mt-4 text-center">
@@ -67,10 +67,11 @@
                 await account.createEmailSession(email, password);
 
                 alert("✅ Signup successful! Redirecting to dashboard...");
-                window.location.href = "/dashboard.html"; // Redirect to dashboard page
+                window.location.href = "/login"; // Redirect to dashboard page
             } catch (error) {
-                console.error("❌ Signup failed:", error);
-                alert("Signup failed: " + error.message);
+                window.location.href = "/login";
+                // console.error("❌ Signup failed:", error);
+                // alert("Signup failed: " + error.message);
             }
         }
 
