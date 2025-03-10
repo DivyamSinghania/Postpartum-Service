@@ -9,6 +9,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Routes to serve different webpages
 app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "landing-page.html"));
+});
+
+app.get("/a", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "a.html"));
 });
 
